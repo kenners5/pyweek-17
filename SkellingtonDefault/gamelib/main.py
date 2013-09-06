@@ -113,16 +113,19 @@ def main():
         video_filename = os.path.join(game_pack['output'],
                                       "output.avi")
         video = cv2.VideoWriter(video_filename,     # Filename
-                                cv2.cv.CV_FOURCC('M','J','P','G'),  # FourCC
+                                -1, # cv2.cv.CV_FOURCC('Y','U','V','9'),  # FourCC
                                 30.0,                  # Framerate
                                 (game_pack['dims']['x'], # Dimensions tuple
                                  game_pack['dims']['y']))
 
         for still in game_pack['frames']:
-            frame = cv2.imread(os.path.join(game_pack['output'],
-                                            still))
+            frame = cv2.imread(still)
             video.write(frame)
+
         cv2.destroyAllWindows()
         video.release()
+
+        for still in game_pack['frames']:
+            os.remove(still)
 
 # EOF
