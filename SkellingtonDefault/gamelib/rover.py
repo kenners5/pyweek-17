@@ -10,7 +10,8 @@ class Rover:
         self.surface = None
         self.location = None
 
-    def load(self, game_pack, image):
+    def load(self, game_pack, **kwargs):
+        image = kwargs.get('image', None)
         self.layer.surface = pygame.image.load(image)
         self.layer.location = self.layer.surface.get_rect()
 
