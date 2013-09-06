@@ -72,7 +72,4 @@ def main():
     while 1:
         loop(game_pack, screen)
 
-if __name__ == "__main__":
-    main()
-
 # EOF
